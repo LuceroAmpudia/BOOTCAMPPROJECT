@@ -12,6 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name="student") //With this annotation I create my table in the database
@@ -33,6 +40,7 @@ public class Student {
 	private String lastName;
 	
 	@Column(name="gender", length=50)
+	@NotEmpty
 	private String gender;
 	
 	@Column(name="age", length=2)
@@ -42,6 +50,7 @@ public class Student {
 	private String address;
 	
 	@Column(name="date_of_birth", length=50)
+	@DateTimeFormat (pattern = "MM / dd / aaaa") 
 	private Date dateOfBirth;
 	
 	@Column(name="grade", length=50)
